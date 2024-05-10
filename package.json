@@ -1,22 +1,35 @@
 {
   "name": "ap-node-cli",
-  "bin": {
-    "ap-node-cli": "./bin/index.js"
-  },
-  "type": "module",
   "version": "1.0.0",
+  "main": "dist/bin.js",
+  "author": "Josh Iverson <jiverson222@gmail.com>",
+  "type": "module",
   "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "bin": {
+    "ap-node-cli": "./dist/bin.js"
   },
-  "author": "",
+  "scripts": {
+    "dev": "pnpm run \"/dev:/\"",
+    "dev:esbuild": "pnpm run build --watch",
+    "dev:tsc": "tsc --watch --preserveWatchOutput",
+    "build": "esbuild --bundle src/bin.ts --platform=node --outfile=dist/bin.js --packages=external --format=esm",
+    "ci": "tsc && pnpm run build",
+    "local-link": "(pnpm unlink --global | true) && pnpm run build && pnpm link --global"
+  },
   "license": "ISC",
   "dependencies": {
     "chalk": "^5.3.0",
     "commander": "^12.0.0",
     "figlet": "^1.7.0",
-    "inquirer": "^9.2.14",
+    "inquirer": "^9.2.20",
     "ora": "^8.0.1"
+  },
+  "devDependencies": {
+    "@tsconfig/node20": "^20.1.4",
+    "@types/figlet": "^1.5.8",
+    "@types/inquirer": "^9.0.7",
+    "@types/node": "^20.12.10",
+    "esbuild": "^0.21.1",
+    "typescript": "^5.4.5"
   }
 }

@@ -1,6 +1,6 @@
 import { program } from "commander";
 
-export const runBasicExample = (options) => {
+export const runBasicExample = (options: any) => {
   program
     .version("1.0.0")
     .description("Basic Example")

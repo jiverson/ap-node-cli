@@ -80,3 +80,4 @@ Contributions are welcome! Please feel free to fork the repository, make changes
 
 ### Notes
 [Reference](https://github.com/lirantal/nodejs-cli-apps-best-practices)
+[GitProjec](https://github.com/GDownes/inspace)

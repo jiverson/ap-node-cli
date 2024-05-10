@@ -1,13 +1,13 @@
 #!/usr/bin/env node
 
 import inquirer from "inquirer";
-import { runBasicExample } from "../src/commands/basic-example.js";
-import { runChalkExample } from "../src/commands/chalk-example.js";
-import { runFigletExample } from "../src/commands/figlet-example.js";
-import { runInquirerExample } from "../src/commands/inquirer-example.js";
-import { runInquirerConfirmExample } from "../src/commands/inquirer-confirm-example.js";
-import { runInquirerListExample } from "../src/commands/inquirer-list-example.js";
-import { runOraExample } from "../src/commands/ora-example.js";
+import { runBasicExample } from "./commands/basic-example";
+import { runChalkExample } from "./commands/chalk-example";
+import { runFigletExample } from "./commands/figlet-example";
+import { runInquirerExample } from "./commands/inquirer-example";
+import { runInquirerConfirmExample } from "./commands/inquirer-confirm-example";
+import { runInquirerListExample } from "./commands/inquirer-list-example";
+import { runOraExample } from "./commands/ora-example";
 
 const examples = {
   "Basic Example": runBasicExample,
@@ -29,9 +29,9 @@ inquirer
     },
   ])
   .then((answers) => {
-    const exampleFunction = examples[answers.selectedExample];
+    const exampleFunction = examples[answers.selectedExample as keyof typeof examples];
     if (exampleFunction) {
-      exampleFunction();
+      exampleFunction(null);
     } else {
       console.error("Invalid selection");
     }
